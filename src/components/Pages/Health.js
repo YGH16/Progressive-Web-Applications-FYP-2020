@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Newsbox from '../Newsbox'
-const NewsAPI = require('newsapi')
+// const NewsAPI = require('newsapi')
 
 export default class Health extends Component {
 

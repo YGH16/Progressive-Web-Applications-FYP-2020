@@ -17,7 +17,7 @@ export default class Home extends Component {
       this.setState({
         articles: Fdata.articles
       })
-      console.log(this.state.articles[1]);//test
+      // console.log(this.state.articles[1]);//test
     }
     componentDidMount(){
       this.getArticles();
