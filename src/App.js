@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
+//Newsapp Components
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 
@@ -13,9 +14,8 @@ import Politics from './components/Pages/Politics';
 import Health from './components/Pages/Health';
 import Science from './components/Pages/Science';
 import Tech from './components/Pages/Tech';
+import Weather from './components/Pages/Weather';
 
-// floating weather tile
-import Stick from './components/Stickynav';
 
 
 class App extends Component{
@@ -25,9 +25,7 @@ class App extends Component{
       <div className="App">
         
         <Router>
-
           <Navbar />
-
           <Route path="/" exact component={Home}></Route>
           <Route path="/About" exact component={About}></Route>
           <Route path="/Business" exact component={Business}></Route>
@@ -36,24 +34,8 @@ class App extends Component{
           <Route path="/Politics" exact component={Politics}></Route>
           <Route path="/Science" exact component={Science}></Route>
           <Route path="/Tech" exact component={Tech}></Route>
-
+          <Route path="/Weather" exact component={Weather}></Route>
         </Router>
-
-        <Stick />
-
-        {/*  Test the various versions of floating and static */}
-
-        {/* <div className="Weather-Tile">
-          <article class="message">
-            <div class="message-header">
-              <p>Today's Weather</p>
-            </div>
-            <div class="message-body">
-              
-            </div>
-          </article>
-          
-        </div> */}
 
       </div>
     )

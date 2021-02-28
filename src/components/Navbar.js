@@ -9,42 +9,96 @@ export default class Navbar extends Component {
           <div className="Navigation">
             <nav className="navbar navbar-expand-lg navbar-light bg-light navbar-colour">
               <div className="container-fluid">
+                <Link to="/" className="navbar-brand">
+                  NEWSHUB
+                </Link>
 
-                <Link to="/" className="navbar-brand">NEWSHUB</Link>
-
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
                   <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavDropdown"
+                >
                   <ul className="navbar-nav">
-
                     <li className="nav-item">
-                      <Link to="" className="nav-link active" aria-current="page">Most Popular</Link>
+                      <Link
+                        to=""
+                        className="nav-link active"
+                        aria-current="page"
+                      >
+                        Most Popular
+                      </Link>
                     </li>
 
                     <li className="nav-item">
-                      <Link to="/Features" className="nav-link">Features</Link>
+                      <Link to="/Weather" className="nav-link">
+                        Weather
+                      </Link>
                     </li>
 
                     <li className="nav-item">
-                      <Link to="/About" className="nav-link">About Us</Link>
+                      <Link to="/Features" className="nav-link">
+                        Features
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link to="/About" className="nav-link">
+                        About Us
+                      </Link>
                     </li>
 
                     <li className="nav-item dropdown">
-
-                      <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {/* leave as an (a) element, as link doesnt work */}
+                      <a
+                        className="nav-link dropdown-toggle"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
                         News Categories
-                      </Link>
+                      </a>
 
-                      <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-                        <li><Link to="/Business" className="dropdown-item">Business</Link></li>
-                        <li><Link to="/Health" className="dropdown-item">Health</Link></li>
-                        <li><Link to="/Politics" className="dropdown-item">Politics</Link></li>
-                        <li><Link to="/Science" className="dropdown-item">Science</Link></li>
-                        <li><Link to="/Tech" className="dropdown-item">Tech</Link></li>
-
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink"
+                      >
+                        <li>
+                          <Link to="/Business" className="dropdown-item">
+                            Business
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/Health" className="dropdown-item">
+                            Health
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/Politics" className="dropdown-item">
+                            Politics
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/Science" className="dropdown-item">
+                            Science
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/Tech" className="dropdown-item">
+                            Tech
+                          </Link>
+                        </li>
                       </ul>
                     </li>
                   </ul>

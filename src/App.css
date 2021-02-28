@@ -1,43 +1,37 @@
 /* Condsider changing the colour theme */
 
-/* import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-
 .App{
   padding: 10px;
-  background-color: #C16767;
-}
-.weather-tile{
-  background-color: white;
-  font-family: 'Roboto', sans-serif;
-}
-.Weather-Tile{
-  text-align: center;
-}
-.stickynav{
-  padding: 10px;
+  /* background-color: #C16767; */
+  /* background-color: #E3F261; */
+  /* background-color: #F0FF4A; */
+  background-color: #33A7D4;
 }
 .navbar-colour{
   background-color: white;
   border-radius: 4px;
-  /* border: 1px solid black; */
+  /* border: 2px solid black; */
 }
 .navbar-brand{
   font-size: 35px;
   font-family: 'Roboto', sans-serif;
-  /* find a new font */
+  font-weight: 700;
 }
 .Navigation{
   padding-bottom: 10px;
 }
-.nav-link{
+.nav-link, .dropdown-item{
   color: black !important;
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 17px;
 }
-.home-title-text, .business-title-text, .health-title-text, .politics-title-text, .science-title-text, .tech-title-text{
+.home-title-text, .business-title-text, .health-title-text, .politics-title-text, .science-title-text, .tech-title-text, .weather-title-text, .features-title-text{
   color: white;
   font-family: 'Roboto', sans-serif;
+  font-size: 45px;
+  font-weight: 700;
+  
 }
 .card{
   background-color: white;
@@ -45,10 +39,9 @@
 .carousel{
   padding-bottom: 10px;
 }
-.dropdown-item{
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Oswald', sans-serif;
-  
+.features-content{
+  /* font-size: 20px; */
+  /* change font  */
 }
 @media only screen and (min-width: 992px) {
   body {

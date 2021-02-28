@@ -19,8 +19,15 @@ export default class Home extends Component {
       })
       // console.log(this.state.articles[1]);//test
     }
+    async getNews(){
+      const data = await fetch('https://gnews.io/api/v4/search?q=example&token=fe4d8face71e9c7f8916bc9f61c87701&lang=en')
+      const Fdata = await data.json();
+
+      console.log(Fdata)
+    }
     componentDidMount(){
-      this.getArticles();
+      //this.getArticles();
+      //this.getNews();
     }
 
     render() {

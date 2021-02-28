@@ -20,7 +20,7 @@ export default class Business extends Component {
     }
 
     componentDidMount(){
-        this.getBusinessArticles();
+        //this.getBusinessArticles();
     }
 
     render() {

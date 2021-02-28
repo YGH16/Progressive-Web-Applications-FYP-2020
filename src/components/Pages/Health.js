@@ -20,7 +20,7 @@ export default class Health extends Component {
         console.log(this.state.articles[1]);
     }
     componentDidMount(){
-        this.getHealthArticles();
+        //this.getHealthArticles();
     }
 
     render() {
