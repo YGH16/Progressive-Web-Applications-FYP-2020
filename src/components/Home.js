@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Caro from './Caro';
 import Newsbox from './Newsbox';
 
+// var navStaus = 'online';
 // displays the most popular articles
 export default class Home extends Component {
   constructor(props){
@@ -26,16 +27,35 @@ export default class Home extends Component {
       console.log(Fdata)
     }
     componentDidMount(){
-      //this.getArticles();
-      //this.getNews();
+      this.getArticles();
+      // this.getNews();
+
+      // if(!navigator.onLine){
+      //   navStaus = 'offline'
+      // }
     }
 
     render() {
       console.log(this.state.articles) 
         return (
           <div className="Home">
-
-            <Caro />
+            {/* Reactivate the caro if it starts working */}
+            {/* <Caro /> */}
+            {/* {
+              navStaus === 'offline'?
+              <div>You are Offline, Check your internet. During offline mode functionality is limited only Most Popular will display articles</div>
+              :null
+            } */}
+            <section className="hero">
+              <div className="hero-body">
+                <p className="title Ht1">
+                  Welcome To <strong>NEWSHUB</strong>
+                </p>
+                <p className="subtitle Hs1">
+                  Did You Know You Can Add Us To Your Home Screen For A More Native Experience
+                </p>
+              </div>
+            </section>
             <h1 className="home-title-text">Most Popular</h1>
             <Newsbox articles={this.state.articles} />
             

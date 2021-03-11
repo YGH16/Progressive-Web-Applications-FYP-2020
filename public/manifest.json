@@ -1,19 +1,34 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "NewHub",
+  "name": "NewsHub",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "72.png",
+      "type": "image/png",
+      "sizes": "72x72"
     },
     {
-      "src": "logo192.png",
+      "src": "96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "384.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
