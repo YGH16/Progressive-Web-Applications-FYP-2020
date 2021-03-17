@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Caro from './Caro';
 import Newsbox from './Newsbox';
 
-// var navStaus = 'online';
+var navStaus = 'online';
 // displays the most popular articles
 export default class Home extends Component {
   constructor(props){
@@ -27,7 +27,7 @@ export default class Home extends Component {
       console.log(Fdata)
     }
     componentDidMount(){
-      this.getArticles();
+      //this.getArticles();
       // this.getNews();
 
       // if(!navigator.onLine){

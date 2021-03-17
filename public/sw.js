@@ -2,6 +2,15 @@
 const staticCacheName = 'static-site-v1';
 const dynamicCacheName = 'dynamic-site-v1';
 
+function spawnNotif(body,title){
+    var options = {
+        body: body
+        // icon: icon
+    }
+
+    var notification = new Notification(title, options);
+}
+
 //Cache assets array
 const assets = [
     '/',
@@ -27,7 +36,7 @@ const dynamicAssets = [
     'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd'
 ]
 
-
+//
 //install event
 self.addEventListener('install', evt => {
     console.log("Service Worker has been installed - static data has been cached")
@@ -65,6 +74,8 @@ self.addEventListener('activate', evt => {
 
 self.addEventListener('fetch', evt => {
     if(!navigator.onLine){
+        var title = 'hello';
+        var notification = new Notification(title);
         evt.respondWith(
             caches.match(evt.request).then(cacheRes => {
                 if(cacheRes){
@@ -75,6 +86,23 @@ self.addEventListener('fetch', evt => {
     }
 
 })
+
+//check notif persmission
+console.log("hello")
+if(Notification.permission === 'granted') {
+    console.log("works")
+} else if(Notification.permission !== 'denied') {
+    Notification.requestPermission().then(permission => {
+        console.log(permission);
+    })
+}
+//check if application is offline
+// if(!navigator.onLine){
+//     console.log("Offline");
+//     var title = 'hello';
+//     var notification = new Notification(title);
+// }
+
 
 // if(navigator.onLine){
 //     console.log("Online")
@@ -89,6 +117,7 @@ self.addEventListener('fetch', evt => {
 // }
 
 
+//'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd'
 // /static/js/main.chunk.js
 // /static/js/bundle.js
 // /static/js/0.chunk.js
