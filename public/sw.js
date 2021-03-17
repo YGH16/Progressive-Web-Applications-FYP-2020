@@ -29,11 +29,13 @@ const assets = [
     'https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css',
     'https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js'
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js',
+    '/manifest.json',
+    '/192.png'
 ];
 // Cache Dynamic asseys array
 const dynamicAssets = [
-    'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd'
+    // 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd'
 ]
 
 //
@@ -74,35 +76,23 @@ self.addEventListener('activate', evt => {
 
 self.addEventListener('fetch', evt => {
     if(!navigator.onLine){
-        var title = 'hello';
-        var notification = new Notification(title);
         evt.respondWith(
             caches.match(evt.request).then(cacheRes => {
                 if(cacheRes){
                     return cacheRes
                 }
+                let requestUrl = evt.request.clone();
+                fetch(requestUrl);
             })
         )
     }
 
 })
 
-//check notif persmission
-console.log("hello")
-if(Notification.permission === 'granted') {
-    console.log("works")
-} else if(Notification.permission !== 'denied') {
-    Notification.requestPermission().then(permission => {
-        console.log(permission);
-    })
-}
-//check if application is offline
-// if(!navigator.onLine){
-//     console.log("Offline");
-//     var title = 'hello';
-//     var notification = new Notification(title);
-// }
-
+self.addEventListener('offline', evt => {
+    console.log("No Internet connection");
+    spawnNotif("No Internet", "InternetDown");
+})
 
 // if(navigator.onLine){
 //     console.log("Online")

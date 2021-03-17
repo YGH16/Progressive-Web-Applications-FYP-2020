@@ -20,6 +20,28 @@ export default class Home extends Component {
       })
       // console.log(this.state.articles[1]);//test
     }
+
+    getArticlesNew(){
+      let url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd';
+      fetch(url).then((response) => {
+        response.json().then((result) => {
+          console.log("result")
+          localStorage.setItem("articles", JSON.stringify(result));
+          this.setState({
+            articles: result.articles
+          })
+        })
+      }).catch(err => {
+        navStaus = 'offline';
+        let collection = localStorage.getItem("articles");
+        let Pdata = JSON.parse(collection)
+        console.log(Pdata)
+        this.setState({
+          articles: Pdata.articles
+        })
+      })
+    }
+
     async getNews(){
       const data = await fetch('https://gnews.io/api/v4/search?q=example&token=fe4d8face71e9c7f8916bc9f61c87701&lang=en')
       const Fdata = await data.json();
@@ -29,6 +51,7 @@ export default class Home extends Component {
     componentDidMount(){
       //this.getArticles();
       // this.getNews();
+      this.getArticlesNew();
 
       // if(!navigator.onLine){
       //   navStaus = 'offline'
@@ -41,11 +64,11 @@ export default class Home extends Component {
           <div className="Home">
             {/* Reactivate the caro if it starts working */}
             {/* <Caro /> */}
-            {/* {
+            {
               navStaus === 'offline'?
-              <div>You are Offline, Check your internet. During offline mode functionality is limited only Most Popular will display articles</div>
+              <div className="notification is-danger">You are in Offline Mode, It seems your connection in not available. In offline mode functionaility is reduced. There is only access to the most popular page and Images are not available</div>
               :null
-            } */}
+            }
             <section className="hero">
               <div className="hero-body">
                 <p className="title Ht1">
