@@ -7,7 +7,7 @@ export default class Newsbox extends Component {
 
           {this.props.articles ? this.props.articles.map((article, index) => (
            <div key={index} className="card">
-           <img src={article.urlToImage} className="card-img-top" alt="Not Available"></img>
+           <img src={article.image} className="card-img-top" alt="Not Available"></img>
            <div key={index} className="card-body">
              <h5 className="card-title">{article.title}</h5>
              <p className="card-text">{article.description}</p>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import Newsbox from '../Newsbox'
 
+var navStaus = 'online';
 export default class Science extends Component {
     constructor(props){
         super(props);
@@ -7,20 +9,36 @@ export default class Science extends Component {
             articles: []
         }
     }
-    async getScienceArticles(){
-        const data = await fetch("https://newsapi.org/v2/top-headlines?country=gb&category=science&apiKey=ba6499bad4eb4af7a54f42954e1807fd");
-        const Fdata = await data.json();
-        this.setState({
-            articles: Fdata.articles
+    getScienceArticles(){
+        let url = 'https://gnews.io/api/v4/top-headlines?token=fe4d8face71e9c7f8916bc9f61c87701&lang=en&country=gb&topic=science';
+        fetch(url).then((response) => {
+          response.json().then((result) => {
+            console.log("result")
+            //localStorage.setItem("business", JSON.stringify(result));
+            this.setState({
+              articles: result.articles
+            })
+          })
+        }).catch(err => {
+          navStaus = 'offline';
         })
     }
     componentDidMount(){
-        //this.getScienceArticles();
+        this.getScienceArticles();
     }
     render() {
         return (
             <div className="Science-page">
+
+                {navStaus === "offline" ? (
+                    <div className="notification is-danger">
+                      You are in Offline Mode, The Science Page is not available, The only page accessible in
+                      offline mode is the most popular page. Please try again once and interent connection is available.
+                    </div>
+                ) : null}
+
                 <h1 className="science-title-text">Science</h1>
+                <Newsbox articles={this.state.articles} />
                 
             </div>
         )

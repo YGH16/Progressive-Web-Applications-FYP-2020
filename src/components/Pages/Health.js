@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Newsbox from '../Newsbox'
 // const NewsAPI = require('newsapi')
 
+var navStaus = 'online';
+
 export default class Health extends Component {
 
     constructor(props){
@@ -10,22 +12,35 @@ export default class Health extends Component {
             articles: []
         }
     }
-    async getHealthArticles(){
-        const data = await fetch("https://newsapi.org/v2/top-headlines?country=gb&category=health&apiKey=ba6499bad4eb4af7a54f42954e1807fd");
-        const Fdata = await data.json();
-        this.setState({
-            articles: Fdata.articles
+    getHealthArticles(){
+        let url = 'https://gnews.io/api/v4/top-headlines?token=fe4d8face71e9c7f8916bc9f61c87701&lang=en&country=gb&topic=health';
+        fetch(url).then((response) => {
+          response.json().then((result) => {
+            console.log("result")
+            //localStorage.setItem("business", JSON.stringify(result));
+            this.setState({
+              articles: result.articles
+            })
+          })
+        }).catch(err => {
+          navStaus = 'offline';
         })
-
-        console.log(this.state.articles[1]);
     }
     componentDidMount(){
-        //this.getHealthArticles();
+        this.getHealthArticles();
     }
 
     render() {
         return (
             <div className="Health-page">
+
+                {navStaus === "offline" ? (
+                    <div className="notification is-danger">
+                      You are in Offline Mode, The Health Page is not available, The only page accessible in
+                      offline mode is the most popular page. Please try again once and interent connection is available.
+                    </div>
+                ) : null}
+
                 <h1 className="health-title-text">Health</h1>
                 <Newsbox articles={this.state.articles} />
                 

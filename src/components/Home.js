@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Caro from './Caro';
 import Newsbox from './Newsbox';
 
 var navStaus = 'online';
@@ -11,18 +10,22 @@ export default class Home extends Component {
       articles: []
     }
   }
-    // gets the most popular articles
-    async getArticles(){
-      const data = await fetch('https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd')
-      const Fdata = await data.json();
-      this.setState({
-        articles: Fdata.articles
-      })
-      // console.log(this.state.articles[1]);//test
+    notify(){
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+      } else if(Notification.permission === "granted"){
+        var notification = new Notification("Hi there!");
+      } else if(Notification.permission !== "denied"){
+        Notification.requestPermission().then((permission) => {
+          if(permission === "granted"){
+            var notification = new Notification("hi There");
+          }
+        });
+      }
     }
-
-    getArticlesNew(){
-      let url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd';
+    //fe4d8face71e9c7f8916bc9f61c87701
+    getArticles(){
+      let url = 'https://gnews.io/api/v4/top-headlines?token=fe4d8face71e9c7f8916bc9f61c87701&lang=en&country=gb';
       fetch(url).then((response) => {
         response.json().then((result) => {
           console.log("result")
@@ -33,6 +36,7 @@ export default class Home extends Component {
         })
       }).catch(err => {
         navStaus = 'offline';
+        this.notify();
         let collection = localStorage.getItem("articles");
         let Pdata = JSON.parse(collection)
         console.log(Pdata)
@@ -41,48 +45,38 @@ export default class Home extends Component {
         })
       })
     }
-
-    async getNews(){
-      const data = await fetch('https://gnews.io/api/v4/search?q=example&token=fe4d8face71e9c7f8916bc9f61c87701&lang=en')
-      const Fdata = await data.json();
-
-      console.log(Fdata)
-    }
     componentDidMount(){
-      //this.getArticles();
-      // this.getNews();
-      this.getArticlesNew();
-
-      // if(!navigator.onLine){
-      //   navStaus = 'offline'
-      // }
+      this.getArticles(); //deactivate for testing
     }
 
     render() {
-      console.log(this.state.articles) 
-        return (
-          <div className="Home">
-            {/* Reactivate the caro if it starts working */}
-            {/* <Caro /> */}
-            {
-              navStaus === 'offline'?
-              <div className="notification is-danger">You are in Offline Mode, It seems your connection in not available. In offline mode functionaility is reduced. There is only access to the most popular page and Images are not available</div>
-              :null
-            }
-            <section className="hero">
-              <div className="hero-body">
-                <p className="title Ht1">
-                  Welcome To <strong>NEWSHUB</strong>
-                </p>
-                <p className="subtitle Hs1">
-                  Did You Know You Can Add Us To Your Home Screen For A More Native Experience
-                </p>
-              </div>
-            </section>
-            <h1 className="home-title-text">Most Popular</h1>
-            <Newsbox articles={this.state.articles} />
-            
-          </div>
-        );
+      console.log(this.state.articles);
+      return (
+        <div className="Home">
+          {/* check if navigator is online, if so displays error */}
+          {navStaus === "offline" ? (
+            <div className="notification is-danger">
+              You are in Offline Mode, It seems your connection in not
+              available. In offline mode functionaility is reduced. There is
+              only access to the most popular page and Images are not available
+            </div>
+          ) : null}
+
+          <section className="hero">
+            <div className="hero-body">
+              <p className="title Ht1">
+                Welcome To <strong>NEWSHUB</strong>
+              </p>
+              <p className="subtitle Hs1">
+                Did You Know You Can Add Us To Your Home Screen For A More
+                Native Experience
+              </p>
+            </div>
+          </section>
+          <h1 className="home-title-text">Most Popular</h1>
+          <Newsbox articles={this.state.articles} />
+        </div>
+
+      );
     }
 }
