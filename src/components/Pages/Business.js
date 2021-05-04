@@ -15,13 +15,20 @@ export default class Business extends Component {
         fetch(url).then((response) => {
           response.json().then((result) => {
             console.log("result")
-            //localStorage.setItem("business", JSON.stringify(result));
+            localStorage.setItem("business", JSON.stringify(result));
             this.setState({
               articles: result.articles
             })
           })
         }).catch(err => {
           navStaus = 'offline';
+          console.log("Business News Section")
+          let collection = localStorage.getItem("business");
+          let Pdata = JSON.parse(collection);
+          console.log("Business Articles: " + Pdata) //For Testing remove later
+          this.setState({
+            articles : Pdata.articles
+          })
         })
       }
 
@@ -35,8 +42,8 @@ export default class Business extends Component {
 
                 {navStaus === "offline" ? (
                     <div className="notification is-danger">
-                      You are in Offline Mode, The Business Page is not available, The only page accessible in
-                      offline mode is the most popular page. Please try again once and interent connection is available.
+                      You are in Offline Mode, It seems your connection is not
+                      available.
                     </div>
                 ) : null}
 

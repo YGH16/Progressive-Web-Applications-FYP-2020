@@ -7,7 +7,7 @@ export default class Navbar extends Component {
     render() {
         return (
           <div className="Navigation">
-            <nav className="navbar navbar-expand-lg navbar-light bg-light navbar-colour">
+            <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light navbar-colour">
               <div className="container-fluid">
                 <Link to="/" className="navbar-brand">
                   NEWSHUB
@@ -37,6 +37,12 @@ export default class Navbar extends Component {
                         aria-current="page"
                       >
                         Most Popular
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link to="/Search" className="nav-link">
+                        Search
                       </Link>
                     </li>
 
@@ -71,7 +77,7 @@ export default class Navbar extends Component {
                       </a>
 
                       <ul
-                        className="dropdown-menu"
+                        className="dropdown-menu dropdown-menu-right"
                         aria-labelledby="navbarDropdownMenuLink"
                       >
                         <li>
@@ -85,8 +91,8 @@ export default class Navbar extends Component {
                           </Link>
                         </li>
                         <li>
-                          <Link to="/Politics" className="dropdown-item">
-                            Politics
+                          <Link to="/World" className="dropdown-item">
+                            World
                           </Link>
                         </li>
                         <li>

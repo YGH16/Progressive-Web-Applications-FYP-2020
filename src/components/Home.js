@@ -9,20 +9,30 @@ export default class Home extends Component {
     this.state ={
       articles: []
     }
-  }
-    notify(){
+    //Check if internet connection is online
+    if(navigator.onLine){
+      navStaus = 'online';
+    } else {
+      navStaus = 'offline'
       if (!("Notification" in window)) {
-        alert("This browser does not support desktop notification");
-      } else if(Notification.permission === "granted"){
-        var notification = new Notification("Hi there!");
-      } else if(Notification.permission !== "denied"){
+        alert("Network is offline, Application is operating in offline mode");
+      } 
+      else if(Notification.permission === "granted"){
+        navigator.serviceWorker.getRegistration().then(reg => {
+          reg.showNotification("Network is offline, Application is operating in offline mode")
+        })
+      }
+      else if(Notification.permission !== "denied"){
         Notification.requestPermission().then((permission) => {
           if(permission === "granted"){
-            var notification = new Notification("hi There");
+            navigator.serviceWorker.getRegistration().then(reg => {
+              reg.showNotification("Network is offline, Application is operating in offline mode")
+            })
           }
         });
       }
     }
+  }
     //fe4d8face71e9c7f8916bc9f61c87701
     getArticles(){
       let url = 'https://gnews.io/api/v4/top-headlines?token=fe4d8face71e9c7f8916bc9f61c87701&lang=en&country=gb';
@@ -36,7 +46,7 @@ export default class Home extends Component {
         })
       }).catch(err => {
         navStaus = 'offline';
-        this.notify();
+        console.log(err);
         let collection = localStorage.getItem("articles");
         let Pdata = JSON.parse(collection)
         console.log(Pdata)
@@ -56,9 +66,8 @@ export default class Home extends Component {
           {/* check if navigator is online, if so displays error */}
           {navStaus === "offline" ? (
             <div className="notification is-danger">
-              You are in Offline Mode, It seems your connection in not
-              available. In offline mode functionaility is reduced. There is
-              only access to the most popular page and Images are not available
+              You are in Offline Mode, It seems your connection is not
+              available.
             </div>
           ) : null}
 

@@ -1,5 +1,5 @@
 {
-  "short_name": "NewHub",
+  "short_name": "NewsHub",
   "name": "NewsHub",
   "icons": [
     {
@@ -35,6 +35,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#33A7D4",
-  "background_color": "#33A7D4"
+  "theme_color": "#4bcaff",
+  "background_color": "#4bcaff"
 }

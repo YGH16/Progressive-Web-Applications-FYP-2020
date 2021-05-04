@@ -10,11 +10,12 @@ import Home from './components/Home';
 import About from './components/Pages/Aboutus';
 import Business from './components/Pages/Business';
 import Features from './components/Pages/Features';
-import Politics from './components/Pages/Politics';
+import World from './components/Pages/World';
 import Health from './components/Pages/Health';
 import Science from './components/Pages/Science';
 import Tech from './components/Pages/Tech';
 import Weather from './components/Pages/Weather';
+import Search from './components/Pages/Search';
 
 
 
@@ -27,11 +28,12 @@ class App extends Component{
         <Router>
           <Navbar />
           <Route path="/" exact component={Home}></Route>
+          <Route path="/Search" exact component={Search}></Route>
           <Route path="/About" exact component={About}></Route>
           <Route path="/Business" exact component={Business}></Route>
           <Route path="/Features" exact component={Features}></Route>
           <Route path="/Health" exact component={Health}></Route>
-          <Route path="/Politics" exact component={Politics}></Route>
+          <Route path="/World" exact component={World}></Route>
           <Route path="/Science" exact component={Science}></Route>
           <Route path="/Tech" exact component={Tech}></Route>
           <Route path="/Weather" exact component={Weather}></Route>

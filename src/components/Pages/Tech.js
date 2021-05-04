@@ -15,13 +15,20 @@ export default class Tech extends Component {
         fetch(url).then((response) => {
           response.json().then((result) => {
             console.log("result")
-            //localStorage.setItem("business", JSON.stringify(result));
+            localStorage.setItem("tech", JSON.stringify(result));
             this.setState({
               articles: result.articles
             })
           })
         }).catch(err => {
           navStaus = 'offline';
+          console.log("Tech News Section")
+          let collection = localStorage.getItem("tech");
+          let Pdata = JSON.parse(collection);
+          console.log("tech: " + Pdata) //For Testing remove later
+          this.setState({
+            articles : Pdata.articles
+          })
         })
     }
     componentDidMount(){
@@ -33,8 +40,8 @@ export default class Tech extends Component {
 
                 {navStaus === "offline" ? (
                     <div className="notification is-danger">
-                      You are in Offline Mode, The Tech Page is not available, The only page accessible in
-                      offline mode is the most popular page. Please try again once and interent connection is available.
+                      You are in Offline Mode, It seems your connection is not
+                      available.
                     </div>
                 ) : null}
 

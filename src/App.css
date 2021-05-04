@@ -10,6 +10,8 @@
 .navbar-colour{
   background-color: white;
   border-radius: 4px;
+  padding: 10;
+  margin: 8px;
   /* border: 2px solid black; */
 }
 .navbar-brand{
@@ -19,6 +21,8 @@
 }
 .Navigation{
   padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }
 .nav-link, .dropdown-item{
   color: black !important;
@@ -26,12 +30,15 @@
   font-weight: bold;
   font-size: 17px;
 }
-.home-title-text, .business-title-text, .health-title-text, .politics-title-text, .science-title-text, .tech-title-text, .weather-title-text, .features-title-text{
+.home-title-text, .business-title-text, .health-title-text, .politics-title-text, .science-title-text, .tech-title-text, .weather-title-text, .features-title-text, .search-title-text{
   color: white;
   font-family: 'Roboto', sans-serif;
   font-size: 45px;
   font-weight: 700;
   
+}
+.business-title-text, .health-title-text, .politics-title-text, .science-title-text, .tech-title-text, .weather-title-text, .features-title-text, .search-title-text{
+  margin-top:50px;
 }
 /* hero title and subtitle */
 .Ht1{
@@ -55,11 +62,32 @@
 }
 .Abutton{
   text-align: center;
+  text-decoration: none;
+}
+.shareButton{
+  float: right;
+}
+.Search-area{
+  display: flex;
+  flex-direction: row;
+}
+.search-button{
+  margin-left: 5px;
+  border-radius: 5px;
+}
+.input-search{
+  margin-bottom: 10px;
+}
+.notification{
+  margin-top: 65px;
+
 }
 @media only screen and (min-width: 992px) {
   .card{
-    display: inline-block;
-    width: 16rem;
+    /* display: flex;
+    flex-direction: column; */
+    text-align: center;
+    width: 80%;
     margin: 5px;
   }
 }

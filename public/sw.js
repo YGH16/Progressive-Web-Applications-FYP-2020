@@ -2,15 +2,6 @@
 const staticCacheName = 'static-site-v1';
 const dynamicCacheName = 'dynamic-site-v1';
 
-function spawnNotif(body,title){
-    var options = {
-        body: body
-        // icon: icon
-    }
-
-    var notification = new Notification(title, options);
-}
-
 //Cache assets array
 const assets = [
     '/',
@@ -26,6 +17,7 @@ const assets = [
     '/Politics',
     '/Science',
     '/Tech',
+    '/Search',
     'https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css',
     'https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js',
@@ -88,24 +80,6 @@ self.addEventListener('fetch', evt => {
     }
 
 })
-
-self.addEventListener('offline', evt => {
-    console.log("No Internet connection");
-    spawnNotif("No Internet", "InternetDown");
-})
-
-// if(navigator.onLine){
-//     console.log("Online")
-//     evt.waitUntil(
-//         caches.open(dynamicCacheName).then(cache => {
-//             console.log("Caching Dynamic Assets -- api data");
-//             cache.addAll(dynamicAssets);
-//         })
-//     )
-// }else{
-//     console.log("Offline")
-// }
-
 
 //'https://newsapi.org/v2/top-headlines?country=gb&apiKey=ba6499bad4eb4af7a54f42954e1807fd'
 // /static/js/main.chunk.js
